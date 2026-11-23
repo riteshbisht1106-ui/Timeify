@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEIFY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+          <audio id="alarmsound" src="alarm.mp3.mp3" loop></audio>
+    <div class="ringing-popup" id="ringingpopup">
+
+                <h2 id="ringingtitle">⏰ Alarm Ringing!</h2>
+               <p id="ringingtime">00:00</p>
+
+    <div class="ringing-buttons">
+        <button id="snoozebtn">Snooze 5 min</button>
+        <button id="dismissbtn">Dismiss</button>
+    </div>
+
+    </div>
+
+        <header>
+            <h1 id="pagetitle">Alarm</h1>
+        </header>
+
+
+        <main>
+            <section id="alarm" class="page">
+                <h2>Alarm</h2>
+
+                <div class="currenttime">
+                    <h1 id="digitaltime">00:00:00</h1>
+                    <p id="currentdate">Wednesday, 19 november</p>
+                </div>
+
+                <div class="alarm-container">
+                    <div class="alarm-header">
+                        <h1>Alarms</h1>
+                        <button id="addalarmbtn">+</button>
+                    </div>
+
+                    <div class="alarm-form" id="alarmform">
+                        <h3>Set alarms</h3>
+                        <input type="time" id="alarmtime">
+
+                        <div class="form-buttons">
+                        <button id="cancelalarm">cancel</button>
+                        <button id="savealarm">save</button>
+                    </div>
+                    </div>
+                    <div id="alarmlist">
+                        <p id="empty-message">No alarms </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="worldclock" class="page">
+                <div class="worldclock-header">
+                <h2>World Clock</h2>
+                <button id="addcitybtn">Add Cities</button>
+                </div>
+
+                <div class="city-form" id="cityform">
+                    <select id="cityselect">
+                        <option value="">Select a city</option>
+                        <option value="Asia/Kolkata">New Delhi</option>
+                        <option value="Europe/London">London</option>
+                        <option value="America/New_york">New York</option>
+                        <option value="Asia/Tokyo">Tokyo</option>
+                        <option value="Asia/Dubai">Dubai</option>
+                        <option value="Australia/Sydney">Sydney</option>
+                    </select>
+                    <div class="form-buttons">
+        <button id="savecitybtn">Save</button>
+        <button id="cancelcitybtn">Cancel</button>
+    </div>
+                </div>
+                <div id="citylist">
+                    <p>No city added yet</p>
+                </div>
+            </section>
+
+
+           <section id="stopwatch" class="page">
+
+    <div class="stopwatch-container">
+
+        <div class="stopwatch-display">
+            <h1 id="stopwatchtime">00:00.00</h1>
+        </div>
+
+        <div class="stopwatch-buttons">
+            <button id="lapbtn">Lap</button>
+            <button id="startbtn">Start</button>
+            <button id="resetbtn">Reset</button>
+        </div>
+
+        <div class="lap-container">
+            <h3>Laps</h3>
+            <div id="laplist">
+                <p>No laps recorded</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+           <section id="timer" class="page">
+
+    <div class="timer-container">
+
+        <h2>Timer</h2>
+
+        <div class="timer-inputs">
+            <div>
+                <input type="number" id="timerhours" min="0" max="99" value="0">
+                <label>Hours</label>
+            </div>
+
+            <div>
+                <input type="number" id="timerminutes" min="0" max="59" value="5">
+                <label>Minutes</label>
+            </div>
+
+            <div>
+                <input type="number" id="timerseconds" min="0" max="59" value="0">
+                <label>Seconds</label>
+            </div>
+        </div>
+
+        <div class="timer-display">
+            <h1 id="timerdisplay">05:00</h1>
+        </div>
+
+        <div class="timer-buttons">
+            <button id="timerresetbtn">Reset</button>
+            <button id="timerstartbtn">Start</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+        </main>
+
+
+        <nav class="bottom-nav">
+            <button class="nav-btn" id="alarmbtn">
+                <span>◷</span>
+                Alarm
+            </button>
+            <button class="nav-btn" id="worldbtn">
+                <span>◉</span>
+                World Clock
+            </button>
+            <button class="nav-btn" id="stopwatchbtn">
+                <span>⏱</span>
+                Stopwatch
+            </button>
+            <button class="nav-btn" id="timerbtn">
+                <span>⌛</span>
+                Timer
+            </button>
+        </nav>
+        
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
