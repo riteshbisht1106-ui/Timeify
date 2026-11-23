@@ -1,0 +1,679 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #0b0b16;
+    color: white;
+    font-family: arial,sans-serif;
+}
+#app{
+    min-height: 100vh;
+}
+header{
+    padding: 20px 25px;
+}
+header h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+.bottom-nav{
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #151520;
+    border-top: 1px solid #303044;
+    padding: 15px 5px;
+}
+.nav-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    color: #9999aa;
+}
+.nav-btn:hover {
+    color: #a78bfa;
+    transform: translateY(-3px);
+}
+.nav-btn.active{
+    color: #a78bfa;
+}
+.nav-btn span{
+    transition: transform 0.3s ease;
+    font-size: 25px;
+}
+.nav-btn:hover span {
+    transform: scale(1.2);
+}
+.bottom-nav {
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+}
+button {
+    transition: all 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+#digitaltime{
+    font-size: 65px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+}
+#currentdate{
+    color: #9999aa;
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+.alarm-container{
+    margin: 45px 25px;
+}
+
+.alarm-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.alarm-header h2{
+    font-size: 25px;
+}
+#addalarmbtn{
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    color: #0b0b16;
+    background: #a78bfa;
+    font-size: 30px;
+    cursor: pointer;
+}
+.alarm-form{
+    display: none;
+    background: #202033;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+.alarm-form h3{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+#alarmtime{
+    width: 100%;
+    padding: 12px;
+    background: #303047;
+    color: white;
+    border: 1px solid #555570;
+    border-radius: 8px;
+    font-size: 18px;
+}
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cancelalarm {
+    background: #303047;
+    color: white;
+}
+
+#savealarm {
+    background: #a78bfa;
+    color: #0b0b16;
+}
+
+.alarm-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #202033;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.alarm-item h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.alarm-item button {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+
+.alarm-item button:nth-of-type(2) {
+    background: #303047;
+    color: white;
+}
+
+.alarm-item button:last-of-type {
+    background: #4b252d;
+    color: #ff8b9a;
+}
+
+
+/* Card Hover Effects */
+
+.city-card,
+.alarm-item {
+    transition: transform 0.3s ease, 
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.city-card:hover,
+.alarm-item:hover {
+    transform: translateY(-4px);
+    border-color: #a78bfa;
+    box-shadow: 0 8px 25px rgba(167, 139, 250, 0.12);
+}
+
+
+
+.alarm-toggle.on{
+    background: #a78bfa;
+    color: #0b0b16;
+}
+.alarm-toggle.off{
+    background: #303047;
+    color: #9999aa;
+}
+.ringing-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 350px;
+    padding: 30px 20px;
+    background: #202033;
+    border: 1px solid #a78bfa;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.ringing-popup h2 {
+    margin-bottom: 20px;
+}
+
+#ringingtime {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.ringing-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.ringing-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#snoozebtn {
+    background: #a78bfa;
+    color: #0b0b16;
+}
+
+#dismissbtn {
+    background: #4b252d;
+    color: white;
+}
+.worldclock-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px;
+}
+#addcitybtn{
+    background: #a78bfa;
+    color: #0b0b16;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+#addcitybtn:hover{
+    transform: scale(1.05);
+}
+.city-form{
+    display: none;
+    margin: 25px;
+    padding: 20px;
+    background: #202033;
+    border-radius: 15px;
+}
+#cityselect{
+    width: 100%;
+    color: white;
+    padding: 12px;
+    background: #303047;
+    border: 1 px solid #555570;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.city-form button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+#savecitybtn{
+    background: #a78bfa;
+}
+#cancelcitybtn{
+    background: #303047;
+    color: white;
+}
+.city-card {
+    background: #202033;
+    margin: 12px 25px;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.city-card h3 {
+    font-size: 18px;
+    color: #a78bfa;
+    margin-bottom: 10px;
+}
+
+.city-card .city-time {
+    font-size: 32px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.city-card .city-date {
+    color: #9999aa;
+    margin-top: 8px;
+}
+.city-card button {
+    margin-top: 15px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #4b252d;
+    color: #ff8b9a;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.city-card button:hover {
+    background: #71323e;
+    color: white;
+    transform: scale(1.05);
+}
+.stopwatch-container {
+    margin: 40px 25px;
+    text-align: center;
+}
+
+.stopwatch-display {
+    margin: 70px 0;
+}
+
+#stopwatchtime {
+    font-size: 65px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+}
+
+.stopwatch-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.stopwatch-buttons button {
+    width: 110px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#lapbtn {
+    background: #303047;
+    color: white;
+    transition: 0.3s ease;
+}
+
+#startbtn {
+    background: #a78bfa;
+    color: #0b0b16;
+    transition: 0.3s ease;
+    
+}
+#resetbtn {
+    background: #303047;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#resetbtn:hover {
+    background: #4b4b65;
+    transform: scale(1.05);
+}
+#startbtn:hover {
+    background: #a78bfa;
+    transform: scale(1.05);
+}
+#lapbtn:hover {
+    background: #4b4b65;
+    transform: scale(1.05);
+}
+
+.lap-container {
+    text-align: left;
+    margin-top: 40px;
+}
+
+.lap-container h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.lap-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5px;
+    border-bottom: 1px solid #303044;
+    color: #ccccdd;
+}
+
+.lap-item span {
+    font-variant-numeric: tabular-nums;
+}
+.timer-container {
+    margin: 40px 25px;
+    text-align: center;
+}
+
+.timer-container h2 {
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+.timer-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 50px 0;
+}
+
+.timer-inputs div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.timer-inputs input {
+    width: 85px;
+    height: 65px;
+    background: #202033;
+    color: white;
+    border: 1px solid #555570;
+    border-radius: 12px;
+    font-size: 25px;
+    text-align: center;
+    outline: none;
+}
+
+.timer-inputs label {
+    color: #9999aa;
+    font-size: 14px;
+}
+
+.timer-display {
+    margin: 60px 0;
+}
+
+#timerdisplay {
+    font-size: 65px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.timer-buttons button {
+    width: 110px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#timerresetbtn {
+    background: #303047;
+    color: white;
+    transition: 0.3s ease;
+}
+#timerresetbtn:hover{
+    transform: scale(1.05);
+}
+#timerstartbtn {
+    background: #a78bfa;
+    color: #0b0b16;
+    transition: 0.3s ease;
+}
+#timerstartbtn:hover{
+    transform: scale(1.05);
+}
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page {
+    animation: pageEnter 1s ease;
+}
+/* Mobile Responsive Design */
+
+@media screen and (max-width: 600px) {
+
+    header {
+        padding: 18px 20px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    #digitaltime {
+        font-size: 45px;
+    }
+
+    .alarm-container {
+        margin: 30px 18px;
+    }
+
+    .worldclock-header {
+        margin: 20px 18px;
+    }
+
+    .city-card {
+        margin: 12px 18px;
+    }
+
+    .stopwatch-container {
+        margin: 30px 15px;
+    }
+
+    #stopwatchtime {
+        font-size: 45px;
+    }
+
+    .timer-container {
+        margin: 30px 15px;
+    }
+
+    #timerdisplay {
+        font-size: 45px;
+    }
+
+    .timer-inputs {
+        gap: 8px;
+    }
+
+    .timer-inputs input {
+        width: 75px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .bottom-nav {
+        padding: 12px 2px;
+    }
+
+    .nav-btn {
+        font-size: 11px;
+    }
+
+    .nav-btn span {
+        font-size: 22px;
+    }
+
+}
+/* Primary Button Effects */
+
+#startbtn,
+#savealarm,
+#savecitybtn,
+#timerstartbtn,
+#addcitybtn {
+    transition: all 0.3s ease;
+}
+
+#startbtn:hover,
+#savealarm:hover,
+#savecitybtn:hover,
+#timerstartbtn:hover,
+#addcitybtn:hover {
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.4);
+    filter: brightness(1.1);
+}
+
+/* ===== FIX PAGE SCROLLING ===== */
+
+html,
+body {
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#app {
+    min-height: 100vh;
+    padding-bottom: 90px;
+}
+
+main {
+    padding-bottom: 30px;
+}
+
+.page {
+    min-height: calc(100vh - 150px);
+    padding-bottom: 30px;
+}
+
+/* ===== FIX BOTTOM NAVIGATION ===== */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #151520;
+    border-top: 1px solid #303044;
+    padding: 12px 5px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+    .bottom-nav {
+        padding: 10px 5px;
+    }
+
+    .nav-btn {
+        font-size: 12px;
+    }
+
+    .nav-btn span {
+        font-size: 23px;
+    }
+}
