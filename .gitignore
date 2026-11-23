@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+
+# Android generated files
+android/.gradle/
+android/local.properties
+android/**/build/
+android/.idea/
+android/captures/
+
+# OS files
+.DS_Store
+Thumbs.db
